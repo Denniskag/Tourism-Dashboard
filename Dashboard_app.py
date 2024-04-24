@@ -5,7 +5,7 @@
     "colab": {
       "provenance": [],
       "mount_file_id": "1I7EVEAavTjkwlPiZRngJR_sbF_s9K5Pm",
-      "authorship_tag": "ABX9TyNsBDCM2EuH5xURjuANzfRP",
+      "authorship_tag": "ABX9TyNpQdia3oILxwThyIrtwgUM",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -153,7 +153,7 @@
         "    st.title('📦 Packages')\n",
         "    st.write(\"Explore packages available.\")\n",
         "    st.write(\"Data from dataset 4:\")\n",
-        "    st.write(df.head())"
+        "    st.write(df4.head())"
       ],
       "metadata": {
         "id": "s1OPegN9FWCW"
