@@ -5,7 +5,7 @@
     "colab": {
       "provenance": [],
       "mount_file_id": "1I7EVEAavTjkwlPiZRngJR_sbF_s9K5Pm",
-      "authorship_tag": "ABX9TyN29Oat2Y5lTUE4AY23Yqy7",
+      "authorship_tag": "ABX9TyOMH4mU/CfLX/mR4ACEqCd5",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -230,17 +230,17 @@
       "cell_type": "code",
       "source": [
         "# Sidebar\n",
-        "with st.sidebar:\n",
-        "    st.title('🏂 Tourism Dashboard')\n",
+        "#with st.sidebar:\n",
+        " #   st.title('🏂 Tourism Dashboard')\n",
         "\n",
-        "    year_list = list(df2.Year.unique())[::-1]\n",
+        "  #  year_list = list(df2.Year.unique())[::-1]\n",
         "\n",
-        "    selected_year = st.selectbox('Select a year', year_list)\n",
-        "    df_selected_year = df2[df2.Year == selected_year]\n",
-        "    df_selected_year_sorted = df_selected_year.sort_values(by='Inbound arrivals (tourists)', ascending=False)\n",
+        "   # selected_year = st.selectbox('Select a year', year_list)\n",
+        "    #df_selected_year = df2[df2.Year == selected_year]\n",
+        "    #df_selected_year_sorted = df_selected_year.sort_values(by='Inbound arrivals (tourists)', ascending=False)\n",
         "\n",
-        "    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']\n",
-        "    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)\n",
+        "    #color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']\n",
+        "    #selected_color_theme = st.selectbox('Select a color theme', color_theme_list)\n",
         "\n"
       ],
       "metadata": {
