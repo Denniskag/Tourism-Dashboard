@@ -5,7 +5,7 @@
     "colab": {
       "provenance": [],
       "mount_file_id": "1I7EVEAavTjkwlPiZRngJR_sbF_s9K5Pm",
-      "authorship_tag": "ABX9TyNpQdia3oILxwThyIrtwgUM",
+      "authorship_tag": "ABX9TyN29Oat2Y5lTUE4AY23Yqy7",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -106,24 +106,12 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 3,
-      "metadata": {
-        "id": "PkqPQyz3E3IJ"
-      },
-      "outputs": [],
-      "source": [
-        "import streamlit as st\n",
-        "import pandas as pd"
-      ]
-    },
-    {
-      "cell_type": "code",
       "source": [
         "# Load datasets\n",
-        "df1 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/tourism dataset power bi.csv\")\n",
-        "d22 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")\n",
-        "df3 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/10- average-length-of-stay.csv\")\n",
-        "df4 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")"
+        "#df1 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/tourism dataset power bi.csv\")\n",
+        "#d22 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")\n",
+        "#df3 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/10- average-length-of-stay.csv\")\n",
+        "#df4 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")"
       ],
       "metadata": {
         "id": "PIDfoesLFTC6"
@@ -134,58 +122,131 @@
     {
       "cell_type": "code",
       "source": [
-        "# Define function to render each page\n",
-        "def page_home(df1, df2):\n",
-        "    st.title('🏠 Home')\n",
-        "    st.write(\"Welcome to the Dashboard! This is the home page.\")\n",
-        "    st.write(\"Data from dataset 1:\")\n",
-        "    st.write(df1.head())\n",
-        "    st.write(\"Data from dataset 2:\")\n",
-        "    st.write(df2.head())\n",
-        "\n",
-        "def page_global(df3):\n",
-        "    st.title('🌍 Global')\n",
-        "    st.write(\"This page displays global information.\")\n",
-        "    st.write(\"Data from dataset 3:\")\n",
-        "    st.write(df3.head())\n",
-        "\n",
-        "def page_packages(df4):\n",
-        "    st.title('📦 Packages')\n",
-        "    st.write(\"Explore packages available.\")\n",
-        "    st.write(\"Data from dataset 4:\")\n",
-        "    st.write(df4.head())"
+        "import streamlit as st\n",
+        "import pandas as pd\n",
+        "import altair as alt\n",
+        "import plotly.express as px"
       ],
       "metadata": {
-        "id": "s1OPegN9FWCW"
+        "id": "TbPamHroOL7_"
       },
-      "execution_count": null,
+      "execution_count": 12,
       "outputs": []
     },
     {
       "cell_type": "code",
       "source": [
-        "# Sidebar navigation and rendering selected page\n",
-        "with st.sidebar:\n",
-        "    st.title('Navigation')\n",
-        "    page_options = {\n",
-        "        \"Home\": page_home,\n",
-        "        \"Global\": page_global,\n",
-        "        \"Packages\": page_packages,\n",
-        "    }\n",
-        "    selected_page = st.selectbox(\"Go to\", list(page_options.keys()))\n",
+        "# Page configuration\n",
+        "st.set_page_config(\n",
+        "    page_title=\"Tourism Dashboard\",\n",
+        "    page_icon=\"📊\",\n",
+        "    layout=\"wide\",\n",
+        "    initial_sidebar_state=\"expanded\")\n",
         "\n",
-        "# Render selected page\n",
-        "if selected_page == \"Home\":\n",
-        "    page_options[selected_page](df1, df2)\n",
-        "elif selected_page == \"Global\":\n",
-        "    page_options[selected_page](df3)\n",
-        "else:\n",
-        "    page_options[selected_page](df4)\n"
+        "alt.themes.enable(\"dark\")"
       ],
       "metadata": {
-        "id": "ZYLDDJTTFaBf"
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LsXHEwSjOQSm",
+        "outputId": "fed3348b-5099-4eea-f585-1139b67b96db"
       },
-      "execution_count": null,
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "ThemeRegistry.enable('dark')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Load data\n",
+        "df1= pd.read_csv('/content/drive/MyDrive/Datasets/Tanzania tourism/tourism dataset power bi.csv')\n",
+        "df2 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")\n",
+        "df3 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/10- average-length-of-stay.csv\")\n",
+        "df4 = pd.read_csv(\"/content/drive/MyDrive/Datasets/Tanzania tourism/ones to use/4- international-tourist-trips.csv\")"
+      ],
+      "metadata": {
+        "id": "Za7UNyc6OsHX"
+      },
+      "execution_count": 19,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df2.columns"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HsRjNLf7PmWb",
+        "outputId": "d86c3637-6bba-4585-dd69-ad02397f414e"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Index(['Entity', 'Code', 'Year', 'Inbound arrivals (tourists)'], dtype='object')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def page_tanzania_tourism():\n",
+        "    st.title('🏂 Tanzania Tourism Dashboard')\n",
+        "\n",
+        "    # Your existing code for the Tanzania Tourism page here\n",
+        "\n",
+        "def page_another_page():\n",
+        "    st.title('🌍 Another Page')\n",
+        "\n",
+        "    # Your code for another page here"
+      ],
+      "metadata": {
+        "id": "0170jnQhOwmV"
+      },
+      "execution_count": 18,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Sidebar\n",
+        "with st.sidebar:\n",
+        "    st.title('🏂 Tourism Dashboard')\n",
+        "\n",
+        "    year_list = list(df2.Year.unique())[::-1]\n",
+        "\n",
+        "    selected_year = st.selectbox('Select a year', year_list)\n",
+        "    df_selected_year = df2[df2.Year == selected_year]\n",
+        "    df_selected_year_sorted = df_selected_year.sort_values(by='Inbound arrivals (tourists)', ascending=False)\n",
+        "\n",
+        "    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']\n",
+        "    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "om6yNG3kPJhi"
+      },
+      "execution_count": 21,
       "outputs": []
     }
   ]
